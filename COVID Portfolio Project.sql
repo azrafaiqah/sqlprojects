@@ -23,7 +23,7 @@ FROM portfolioproject.covid_death
 WHERE location = 'Malaysia'
 ORDER BY STR_TO_DATE(date, '%d/%m/%Y');
 
--- looking at countries with highest infection rate compared to population
+-- Looking at countries with highest infection rate compared to population
 
 SELECT location, population, MAX(total_cases) as highest_infection_count, MAX((total_cases/population))*100 AS percent_population_infected
 FROM portfolioproject.covid_death
@@ -31,7 +31,7 @@ FROM portfolioproject.covid_death
 GROUP BY location, population
 ORDER BY percent_population_infected DESC;
 
--- looking at countries with highest death count per population
+-- Looking at countries with highest death count per population
 
 SELECT location, MAX(cast(total_deaths AS SIGNED)) AS total_death_count
 FROM portfolioproject.covid_death
@@ -42,7 +42,7 @@ ORDER BY total_death_count DESC;
 
 -- LET'S BREAK THINGS DOWN BY CONTINENT
 
--- showing continents with the highest death count per population
+-- Showing continents with the highest death count per population
 
 SELECT continent, SUM(new_deaths) AS total_death_count
 -- SELECT continent, MAX(cast(total_deaths AS SIGNED)) AS total_death_count
